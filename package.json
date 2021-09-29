@@ -1,19 +1,22 @@
 {
   "name": "myapp",
-  "version": "0.0.10",
+  "version": "0.0.7",
   "main": "main.js",
   "description": "electron-updater example project",
   "author": "João Dematé",
-  "title":"App",
+  "title": "App",
   "scripts": {
     "start": "electron .",
     "pack": "node_modules/.bin/electron-builder --dir",
     "build": "node_modules/.bin/electron-builder --win",
     "postinstall": "",
     "install": "node-gyp install",
-    "packLocal": "electron-builder --win"
+    "packLocal": "electron-builder --win",
+    "dist": "electron-builder"
   },
   "build": {
+    "productName": "App",
+    "artifactName": "App",
     "directories": {
       "buildResources": "resources",
       "output": "wwwroot"
@@ -32,9 +35,16 @@
       "verifyUpdateCodeSignature": false
     },
     "linux": {
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "http://127.0.0.1:8080/"
+        }
+      ],
       "target": [
         "AppImage"
-      ]
+      ],
+      "category": "Utility"
     }
   },
   "dependencies": {
