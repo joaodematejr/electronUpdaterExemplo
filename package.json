@@ -1,0 +1,49 @@
+{
+  "name": "myapp",
+  "version": "0.0.10",
+  "main": "main.js",
+  "description": "electron-updater example project",
+  "author": "João Dematé",
+  "title":"App",
+  "scripts": {
+    "start": "electron .",
+    "pack": "node_modules/.bin/electron-builder --dir",
+    "build": "node_modules/.bin/electron-builder --win",
+    "postinstall": "",
+    "install": "node-gyp install",
+    "packLocal": "electron-builder --win"
+  },
+  "build": {
+    "directories": {
+      "buildResources": "resources",
+      "output": "wwwroot"
+    },
+    "appId": "com.github.iffy.adasdasdsadasd",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "http://127.0.0.1:8080/"
+        }
+      ],
+      "verifyUpdateCodeSignature": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-log": "^4.4.1",
+    "electron-updater": "^4.3.9",
+    "http-server": "^13.0.2"
+  },
+  "devDependencies": {
+    "electron": "15.0.0",
+    "electron-builder": "^22.11.7"
+  }
+}
